@@ -4,14 +4,19 @@ const connectDB = require("./config/db")
 const router = require('./routes/taskRoutes')
 const app = express()
 require("dotenv").config()
+const authRoutes = require("./routes/authRoutes")
+
+
 
 app.use(cors({
-    origin:"http://localhost:5173"
+    origin:"http://localhost:5173",
+    credentails:true
 }))
 
 app.use(express.json())
 
 app.use("/api/tasks",router)
+app.use("/api/auth",authRoutes)
 
 app.use("/",(req,res) => {
     res.json({

@@ -89,7 +89,7 @@ router.get("/:id",async (req,res) => {
         })
     }
     catch (error){
-        res.status(400).json({
+        res.status(404).json({
             message:error.message
         })
     }
