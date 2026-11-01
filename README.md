@@ -214,13 +214,13 @@ TaskManager is intended to be deployed using Vercel and MongoDB Atlas.
 
 The TaskManager frontend is deployed on Vercel.
 
-🔗 **Live Website:** [Add your frontend Vercel URL here](#)
+🔗 **Live Website:** [https://taskmanager-client-psi.vercel.app/](#)
 
 ### Backend
 
 The Express backend is deployed separately.
 
-🔗 **Backend URL:** [Add your backend Vercel URL here](#)
+🔗 **Backend URL:** [https://task-manager-tau-umber-96.vercel.app/](#)
 
 ### Database
 
