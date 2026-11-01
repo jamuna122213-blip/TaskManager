@@ -5,9 +5,9 @@ TaskManager is a full-stack task management web application built to make managi
 
 Built with React, Tailwind CSS, Node.js, Express, and MongoDB, TaskManager combines a clean dashboard interface with a full-stack architecture.
 
-🌐 **Live Website:** [TaskManager](#)
+🌐 **Live Website:** [https://taskmanager-client-psi.vercel.app/](#)
 
-📦 **GitHub Repository:** [TaskManager on GitHub](#)
+📦 **GitHub Repository:** [https://github.com/jamuna122213-blip/TaskManager](#)
 
 ---
 
@@ -16,29 +16,28 @@ Built with React, Tailwind CSS, Node.js, Express, and MongoDB, TaskManager combi
 ### 🏠 Dashboard
 TaskManager Dashboard
 
-![TaskManager Dashboard](./docs/screenshots/dashboard.png)
+![TaskManager Dashboard](./docs/dashboard.png)
 
 ### 🔐 Login Page
 TaskManager Login Page
 
-![TaskManager Login](./docs/screenshots/login.png)
+![TaskManager Login](./docs/login.png)
 
 ### 📝 Register Page
 TaskManager Register Page
 
-![TaskManager Register](./docs/screenshots/register.png)
+![TaskManager Register](./docs/register.png)
 
 ### ➕ Create Task
 TaskManager Create Task
 
-![TaskManager Create Task](./docs/screenshots/create-task.png)
+![TaskManager Create Task](./docs/createtask.png)
 
-### ✏️ Update Task
-TaskManager Update Task
+### Settings
+Setting
 
-![TaskManager Update Task](./docs/screenshots/update-task.png)
+![setting show user ](./docs/setting.png)
 
----
 
 ## ✨ Features
 
@@ -123,7 +122,7 @@ TaskManager/
 │   └── package.json
 │
 ├── docs/
-│   └── screenshots/
+│   └── all images
 │
 └── README.md
 ```
@@ -301,13 +300,13 @@ Suggestions and improvements are welcome.
 
 ## 👨‍💻 Author
 
-**Sri Sabari**
+**Jamuna**
 
-GitHub: [Your GitHub Profile](#)
+GitHub: [https://github.com/jamuna122213-blip](#)
 
-Project: TaskManager Repository
+Project: https://github.com/jamuna122213-blip/TaskManager
 
-Live Website: TaskManager
+Live Website: https://taskmanager-client-psi.vercel.app/
 
 ---
 
