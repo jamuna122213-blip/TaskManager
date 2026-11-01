@@ -5,7 +5,7 @@ const authMiddleware = (req,res,next) => {
         const token = req.cookies.token
 
         if(!token){
-            res.status(401).json({
+            return res.status(401).json({
                 message:"Access denied"
             })
         }
@@ -18,7 +18,7 @@ const authMiddleware = (req,res,next) => {
     }
     catch (error){
         return res.status(401).json({
-            message:"INvalid or expired token"
+            message:"Invalid or expired token"
         }) 
     }
 }

@@ -1,9 +1,53 @@
-import {useState} from "react"
+import {useState,useEffect} from "react"
 import CreateTask from "./components/CreateTask.jsx"
+import Login from "./pages/Login.jsx"
+import Register from "./pages/Register.jsx"
+import axios from "axios"
 
 function App(){
   const [activeTab,setActiveTab]=useState("Overview")
   const [showCreateTask,setShowCreateTask] = useState(false)
+  const [showLogin,setShowLogin] =useState(false)
+   const [showRegister,setShowRegister]=useState(false)
+   const [user,setUser] = useState(null)
+   const [task,setTasks] = useState([])
+
+
+   useEffect(() => {
+    const getUser = async () => {
+    try{
+      const response = await axios.get(
+        "http://localhost:5000/api/auth/me",
+        {withCredentials:true}
+      )
+      setUser(response.data.user)
+    }
+
+    catch (error){
+      setUser(null)
+    }
+  }
+  getUser()
+   },[])
+
+
+   const fetchTasks = async () => {
+    try{
+    const response = await axios.get(
+  "http://localhost:5000/api/tasks",
+    {withCredentials:true}
+    )
+    setTasks(response.data.tasks)
+    }
+    catch(error) {
+      console.log("Error Fetching tasks",error.response?.data || error.message)
+    }
+   }
+
+   useEffect(() => {
+    fetchTasks()
+   },[])
+  
 
 
 
@@ -42,6 +86,17 @@ function App(){
       ))
     }
   </nav>
+  <button onClick ={() => {
+    setShowLogin(true)
+    setShowRegister(false)
+  }}
+  
+  className="mt-6 w-full rounded-xl border border-white/10 px-4 py-3 
+  text-left text-gray-400 hover:bg-white/5 hover:text-lime-400">
+    Login
+  </button>
+ 
+
 
   <div className="mt-auto rounded-2xl bg-white/5 p-4">
   <p className="text-sm text-gray-400">Your focus</p>
@@ -55,6 +110,16 @@ function App(){
 
 
 <main className="flex-1  min-w-0 p-4 md:p-8">
+
+
+  {user && (
+    <h2 className="text-xl font-semibold text-pink-600 mt-2 mb-4">
+      Hello <span className="text-red-500">{user.username}</span>
+    </h2>
+  )}
+
+
+
   <header className="flex justify-between items-center">
    <div>
    <p className="text-gray-500text-sm">WorkSpace / {activeTab}</p>
@@ -88,30 +153,54 @@ function App(){
         </div>
   </section>
 
-  <section className="mt-10">
+   <section classname="mt-10">
     <div className="flex justify-between items-center mb-5">
-      <h3 className="text-xl font-semibold">Today's focus</h3>
-      <button className="text-sm text-gray-400 hover:text-lime-400">
-        View All →
-      </button>
+      <h3 classname="text-xl font-semibold">My Tasks</h3>
+      <span className="text-sm text-gray-400">
+        {task.length}tasks
+      </span>
     </div>
 
-    <div className="bg-[#1a1b18] border border-white/10 rounded-2xl p-5 flex items-center justify-between">
-    <div className="flex items-center gap-4">
-      <div className="w-5 h-5 rounded-full border-2 border-lime-400" />
-       <div>
-        <p className="font-medium">Build the TaskFlow interface</p>
-        <p className="text-sm text-gray-500 mt-1">
-          Design - Today
+    <div className="space-y-4">
+      {task.length===0 ? (
+        <p className="text-gray-400">
+           No Tasks Found. Create your first task!
         </p>
-       </div>
+        ):
+        (
+        task.map((item) => (
+          <div 
+          key={item._id}
+          className="bg-[#1a1b18] border border-white/10 rounded-2xl
+           p-5 flex items-center justify-between"
+          >
+            <div >
+              <p className="font-medium">{item.title}</p>
+              <p className="text-sm text-gray-500 mt-1">
+                {item.description}
+              </p>
+
+              <p className="text-xs text-gray-500 mt-2">
+                Due:{new Date(item.dueDate).toLocaleDateString()}
+              </p>
+              </div>
+              <span
+              className={`text-xs px-3 py-1.5 rounded-full ${
+                item.completed
+                ? "bg-lime-400/10 text-lime-400"
+                : "bg-yellow-400/10 text-yellow-400"
+              }`}
+              >
+                {item.completed ? "Completed" : "Pending"}
+              </span>
+          </div>
+      )
+      )
+    )}
     </div>
-     
-     <span className="text-xs bg-lime-400/10 text-lime-400 px-3 py-1.5 rounded-full ">
-     In Progress
-     </span>
-    </div>
-  </section>
+
+
+   </section>
 
 </main>
 
@@ -121,6 +210,36 @@ function App(){
   />
 )}
 
+{showLogin && !showRegister && (
+  <Login 
+  onClose={() => setShowLogin(false)}
+  onGoToRegister={() => setShowRegister(true)} 
+  onLoginSucess = {(loggedInUser) => setUser(loggedInUser)}
+/>
+)}
+
+{showRegister && (
+  <Register 
+  onClose={() => setShowRegister(false)}
+  onGoToLogin = {() =>{
+    setShowRegister(false)
+      setShowLogin(true)}
+  }
+/>
+)}
+
+{showCreateTask && (
+  <CreateTask
+  onClose={()=>setShowCreateTask(false)}
+  onSuccess ={() =>{
+    setSuccessMessage("Task created successfully! 🎉")
+    setShowCreateTask(false)
+    fetchTasks()
+  }}
+  />
+
+ 
+)}
 </div>
  )
 }

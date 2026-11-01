@@ -9,7 +9,8 @@ const Task = require("../models/Task.js")
 const register = async (req,res) => {
     try{
      const {username,email,password}=req.body
-
+     
+    
      if (!username || !username.trim()){
         return res.status(400).json({
             message:"Username  is required"
