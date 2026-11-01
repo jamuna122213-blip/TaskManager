@@ -7,6 +7,7 @@ function Login({onClose,onGoToRegister,onLoginSucess}) {
  const [password,setPassword] = useState("")
  const [error,setError] = useState("")
 
+
  const handleSubmit = async (e) => {
     e.preventDefault()
     setError("")
@@ -35,10 +36,16 @@ function Login({onClose,onGoToRegister,onLoginSucess}) {
     return (
         <div className=" fixed inset-0 z-50 min-h-scren bg-[#10110f] flex items-center justify-center p-4 text-white ">
         <div className="w-full max-w-md rounded-2xl border border-white/10 bg-[#1a1b18] p-8">
-        
+        <div className="flex items-center justify-between">
         <h1 className="text-3xl font-bold">
             Task<span className="text-lim-400">Manager</span>
         </h1>
+        <span 
+        onClick = {onClose}
+      >X</span>
+
+        </div>
+      
 
         <p className="mt-4 text gray-400">
             Welcomne back!

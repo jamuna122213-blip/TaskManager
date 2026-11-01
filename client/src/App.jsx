@@ -11,54 +11,123 @@ function App(){
    const [showRegister,setShowRegister]=useState(false)
    const [user,setUser] = useState(null)
    const [task,setTasks] = useState([])
+   const [search,setSearch] = useState("")
+  const [filter,setFilter] = useState("All")
+  const [editingTask,setEditingTask] = useState(null)
 
+   const totalTasks = task.length
+   
+   const filteredTasks = task.filter((item) => 
+      {
+        const matchSearch = item.title.
+        toLowerCase().
+        includes(search.toLowerCase())
+
+        const matchFilter =
+        filter === "All" || 
+        (filter === "Completed" && item.completed) ||
+        (filter === "Pending" && !item.completed)
+
+        return matchSearch && matchFilter
+      })
+  const displayTasks = 
+       activeTab === "Completed"?
+       filteredTasks.filter((item) => item.completed):
+       filteredTasks
+
+
+   const completedTasks = task.filter(
+          (item) => item.completed
+        ).length
+
+   const pendingTasks = task.filter(
+            (item) => !item.completed
+          ).length
 
    useEffect(() => {
-    const getUser = async () => {
-    try{
-      const response = await axios.get(
-        "http://localhost:5000/api/auth/me",
-        {withCredentials:true}
-      )
-      setUser(response.data.user)
-    }
+            const getUser = async () => {
+            try{
+              const response = await axios.get(
+                "http://localhost:5000/api/auth/me",
+                {withCredentials:true}
+              )
+              setUser(response.data.user)
+            }
 
-    catch (error){
-      setUser(null)
-    }
-  }
-  getUser()
-   },[])
+            catch (error){
+              setUser(null)
+            }
+          }
+          getUser()
+          },[])
 
 
    const fetchTasks = async () => {
-    try{
-    const response = await axios.get(
-  "http://localhost:5000/api/tasks",
-    {withCredentials:true}
-    )
-    setTasks(response.data.tasks)
-    }
-    catch(error) {
-      console.log("Error Fetching tasks",error.response?.data || error.message)
-    }
-   }
+          try{
+          const response = await axios.get(
+        "http://localhost:5000/api/tasks",
+          {withCredentials:true}
+          )
+          setTasks(response.data.tasks)
+          }
+          catch(error) {
+            console.log("Error Fetching tasks",error.response?.data || error.message)
+          }
+        }
 
    useEffect(() => {
     fetchTasks()
    },[])
   
 
+const handleLoginSuccess= async () => {
+          try{
+          const response = await axios.get(
+            "http://localhost:5000/api/auth/me",
+            {withCredentials:true}
+          )
+          setUser(response.data.user)
+          await fetchTasks()
+          }
+          catch (error){
+            console.log("Erro loading user:",error.message)
+          }
+        }
 
 
-   const menueItems = [
-    "Overview",
-    "My Tasks",
-    "Completed",
-    "Settings"
-   ]
+        const menueItems = [
+          "Overview",
+          "My Tasks",
+          "Completed",
+          "Settings"
+        ]
     
+const handleToggleTask = async (id) => {
+          try{
+            await axios.patch(
+              `http://localhost:5000/api/tasks/${id}/toggle`,
+              {},
+              {withCredentials:true}
+            )
 
+            fetchTasks()
+          }
+          catch (error){
+            console.log(error.response?.data || error.message)
+          }
+        }
+const handleDeleteTask = async (id) => {
+      try{
+        await axios.delete(
+          `http://localhost:5000/api/tasks/${id}`,
+          {withCredentials:true}
+        )
+        fetchTasks()
+      }
+      catch(error){
+        console.log(error.response?.data || error.message)
+      }
+    }
 
    return (
 
@@ -133,50 +202,92 @@ function App(){
    </button>
   </header>
 
+
+{activeTab === "Overview" && (
   <section className="mt-10 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-5">
         <div className="bg-[#1a1b18] border border-white/10 rounded-2xl p-6">
         <p className="text-gray-500 text-xl font-semibold">Total Tasks</p>
-        <p className="text-gray-400 font-bold mt-3 text-2xl">24</p>
+        <p className="text-gray-400 font-bold mt-3 text-2xl">{totalTasks}</p>
         <p className="text-lime-400 text-sm mt-3">Tasks in your workspace</p>
         </div>
 
           <div className="bg-[#1a1b18] border border-white/10 rounded-2xl p-6">
         <p className="text-gray-500 font-semibold text-xl">Completed</p>
-        <p className="text-gray-400 font-bold mt-3 text-2xl">4</p>
+        <p className="text-gray-400 font-bold mt-3 text-2xl">{completedTasks}</p>
         <p className="text-lime-400 text-sm mt-3">Keep the momentumn</p>
         </div>
 
   <div className="bg-[#1a1b18] border border-white/10 rounded-2xl p-6">
         <p className="text-gray-500 text-xl font-semibold">Pending</p>
-        <p className="text-gray-400 font-bold mt-3 text-2xl">8</p>
+        <p className="text-gray-400 font-bold mt-3 text-2xl">{pendingTasks}</p>
         <p className="text-lime-400 text-sm mt-3">Ready for your focus</p>
         </div>
-  </section>
+  </section> 
+)}
+  
 
-   <section classname="mt-10">
+{activeTab ==="Settings" ? (
+  <section className="mt-10 rounded-2xl border-white/10 bg-[#1a1b18] p-6">
+    <h3 className="text-xl font-semibold">Settings</h3>
+    <p className="mt-3 text-gray-400">
+      Manage your TaskFlow Account and preferences
+    </p>
+    <p classname="mt-4 text-sm text-gray-500">
+      Loggesd in as : {user?.username || "Guest"}
+    </p>
+  </section>
+):(
+<section className="mt-10">
     <div className="flex justify-between items-center mb-5">
-      <h3 classname="text-xl font-semibold">My Tasks</h3>
+      <h3 className="text-xl font-semibold">
+        {activeTab === "Completed" ? "Completed Tasks" : "My Tasks"}
+      </h3>
       <span className="text-sm text-gray-400">
-        {task.length}tasks
+        {displayTasks.length} tasks
       </span>
     </div>
 
+    <input 
+    type="text"
+    placeholder="Search tasks..."
+    value={search}
+    onChange={(e) => setSearch(e.target.value)}
+    className="w-full mb-4 rounded-xl
+     bg-[#1a1b18] border border-white/10 p-3 text-white " />
+
+    <div className="flex gap-3 mb-5">
+      {["All","Completed","Pending"].map((item) => (
+        <button 
+        key={item}
+        onClick = {()=>setFilter(item)}
+        className={`px-4 py-3 rounded-xl tgext-sm ${
+          filter === item 
+          ? 
+          "bg-lime-400 text-black"
+          :"bg-white/5 text-gray-4000"
+        }`}
+        >
+          {item}
+        </button>
+      ))}
+    </div>
+
     <div className="space-y-4">
-      {task.length===0 ? (
+      {displayTasks.length===0 ? (
         <p className="text-gray-400">
            No Tasks Found. Create your first task!
         </p>
         ):
         (
-        task.map((item) => (
+        displayTasks.map((item) => (
           <div 
           key={item._id}
           className="bg-[#1a1b18] border border-white/10 rounded-2xl
            p-5 flex items-center justify-between"
           >
             <div >
-              <p className="font-medium">{item.title}</p>
-              <p className="text-sm text-gray-500 mt-1">
+              <p className="font-medium text-lg ">{item.title}</p>
+              <p className="p-5 text-sm text-gray-500 mt-1">
                 {item.description}
               </p>
 
@@ -184,6 +295,7 @@ function App(){
                 Due:{new Date(item.dueDate).toLocaleDateString()}
               </p>
               </div>
+              <div className="flex flex-col gap-3" >
               <span
               className={`text-xs px-3 py-1.5 rounded-full ${
                 item.completed
@@ -193,6 +305,25 @@ function App(){
               >
                 {item.completed ? "Completed" : "Pending"}
               </span>
+              <button 
+              onClick={() => handleToggleTask(item._id)}
+                className="rounded-lg bg-lime-400 px-1 py-1 text-black">
+                  {item.completed ? "Undo" : "Complete"}
+                </button>
+                <button 
+                 onClick = {() => handleDeleteTask(item._id)}
+                 className="rounded-lg  bg-red-500 px-3 py-2 text-white"
+                >Delete</button>
+                <button onClick = {() => {
+                  setEditingTask(item)
+                  setShowCreateTask(true)
+                }}
+                className="rounded-lg bg-blue-500 px-2 py-2 text-white"
+                >
+                 Edit
+                 </button>
+                </div>
+
           </div>
       )
       )
@@ -201,20 +332,17 @@ function App(){
 
 
    </section>
+)}
+   
 
 </main>
 
-{showCreateTask && (
-  <CreateTask 
-  onClose ={() => setShowCreateTask(false)}
-  />
-)}
 
 {showLogin && !showRegister && (
   <Login 
   onClose={() => setShowLogin(false)}
   onGoToRegister={() => setShowRegister(true)} 
-  onLoginSucess = {(loggedInUser) => setUser(loggedInUser)}
+  onLoginSucess = {handleLoginSuccess}
 />
 )}
 
@@ -230,11 +358,15 @@ function App(){
 
 {showCreateTask && (
   <CreateTask
-  onClose={()=>setShowCreateTask(false)}
+  taskToEdit={editingTask}
+  onClose={()=>{setShowCreateTask(false)
+    setEditingTask(null)}
+  }
+
   onSuccess ={() =>{
-    setSuccessMessage("Task created successfully! 🎉")
     setShowCreateTask(false)
     fetchTasks()
+     setEditingTask(null)
   }}
   />
 

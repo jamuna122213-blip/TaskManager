@@ -1,11 +1,24 @@
-import {useState} from "react"
+import {useState,useEffect} from "react"
 import axios from "axios"
 
-function CreateTask({ onClose ,onSuccess}){
+function CreateTask({ onClose ,onSuccess,taskToEdit}){
   const [title,setTitle] =useState("") 
   const [description,setDescription] =useState("")
   const [dueDate,setDueDate] =useState("")
   const [success,setSuccess] = useState("")
+ const [errorMessage,setErrorMessage] = useState("")
+    
+
+ useEffect(() =>{
+    if (taskToEdit){
+        setTitle(taskToEdit.title || "")
+        setDescription(taskToEdit.description || "")
+        setDueDate(
+            taskToEdit.dueDate? new Date(taskToEdit.dueDate).toISOString().split("T")[0] : ""
+        )
+    }
+ },[taskToEdit])
+ 
 
 
    const handleSubmit = async (e) => {
@@ -13,7 +26,21 @@ function CreateTask({ onClose ,onSuccess}){
     
     console.log("form submitted",{title,description,dueDate})
     try{
-        const response = await axios.post(
+        const response = taskToEdit ? 
+         await axios.put(
+          `http://localhost:5000/api/tasks/${taskToEdit._id}`,
+              {
+           title,
+          description,
+           dueDate
+      },
+      {
+        withCredentials: true
+      } 
+      
+        )
+        :
+         await axios.post(
             "http://localhost:5000/api/tasks",
             {
                 title,
@@ -22,16 +49,23 @@ function CreateTask({ onClose ,onSuccess}){
             },{
                 withCredentials:true
             }
-        )
-
-        setSuccess("Task Created Successfully! 🎉")
-        console.log("Task created", response.status, response.data)
-        setTimeout(()=>{
-        onClose()
-        },1400)
+        ) 
+       
+        setSuccess(
+            taskToEdit
+             ? "Task Updated Successfully! 🎉"
+             :"Task Created Successfully")
         onSuccess()
+        console.log("Task created", response.status, response.data)
+        
+        
     }
     catch (error){
+        const message = error.response?.data?.message ||
+        error.response?.data?.error ||
+        error.message
+
+        setErrorMessage(message)
      console.log("Error creating task:",error.response?.data || error.message)
     }
    }                        
@@ -68,6 +102,7 @@ function CreateTask({ onClose ,onSuccess}){
 
                   <input 
                   value = {title}
+                  required
                   onChange = {(e) => setTitle(e.target.value)}
                   type="text"
                   placeholder="what need to be done ?"
@@ -84,6 +119,7 @@ function CreateTask({ onClose ,onSuccess}){
 
                   <textarea
                   value={description}
+                  required
                   onChange = {(e) => setDescription(e.target.value)}
                   type="text"
                   placeholder="Add some details"
@@ -100,6 +136,7 @@ function CreateTask({ onClose ,onSuccess}){
 
                   <input 
                   value={dueDate}
+                  required
                   onChange = {(e)=>setDueDate(e.target.value)}
                   type="date"
                   placeholder="what need to be done ?"
@@ -109,6 +146,11 @@ function CreateTask({ onClose ,onSuccess}){
                     focus:border-lime-400
                     [color-scheme:dark]" />
                 </div>
+                {errorMessage && (
+                <p className="mb-3 rounded-lg border border-red-500/30 bg-red-500/10 p-3 text-sm text-red-400">
+                    {errorMessage}
+                </p>
+                )}
 
                 <div className="flex justify-end gap-3 pt-2">
                     <button 
@@ -119,12 +161,13 @@ function CreateTask({ onClose ,onSuccess}){
                         Cancel
                     </button>
 
+
                     <button 
                     type="submit"
                     className="rounded-xl bg-lime-400 px-5 py-3
                      font-semibold text-black
                       hover:bg-lime-300">
-                        Create Task
+                        {taskToEdit ? "Update Task" : "Create Task"}
                     </button>
 
                 </div>
