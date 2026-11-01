@@ -1,5 +1,6 @@
 import {useState,useEffect} from "react"
 import axios from "axios"
+import { API_URL } from "../config"
 
 function CreateTask({ onClose ,onSuccess,taskToEdit}){
   const [title,setTitle] =useState("") 
@@ -28,7 +29,7 @@ function CreateTask({ onClose ,onSuccess,taskToEdit}){
     try{
         const response = taskToEdit ? 
          await axios.put(
-          `http://localhost:5000/api/tasks/${taskToEdit._id}`,
+        `${API_URL}/api/tasks/${taskToEdit._id}`,
               {
            title,
           description,
@@ -41,7 +42,7 @@ function CreateTask({ onClose ,onSuccess,taskToEdit}){
         )
         :
          await axios.post(
-            "http://localhost:5000/api/tasks",
+          `${API_URL}/api/tasks`,
             {
                 title,
                 description,

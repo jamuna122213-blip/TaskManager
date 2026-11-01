@@ -3,7 +3,7 @@ import CreateTask from "./components/CreateTask.jsx"
 import Login from "./pages/Login.jsx"
 import Register from "./pages/Register.jsx"
 import axios from "axios"
-
+import {API_URL} from "./config.js"
 function App(){
   const [activeTab,setActiveTab]=useState("Overview")
   const [showCreateTask,setShowCreateTask] = useState(false)
@@ -48,7 +48,7 @@ function App(){
             const getUser = async () => {
             try{
               const response = await axios.get(
-                "http://localhost:5000/api/auth/me",
+               `${API_URL}/api/auth/me`,
                 {withCredentials:true}
               )
               setUser(response.data.user)
@@ -65,7 +65,7 @@ function App(){
    const fetchTasks = async () => {
           try{
           const response = await axios.get(
-        "http://localhost:5000/api/tasks",
+         `${API_URL}/api/tasks`,
           {withCredentials:true}
           )
           setTasks(response.data.tasks)
@@ -83,7 +83,7 @@ function App(){
 const handleLoginSuccess= async () => {
           try{
           const response = await axios.get(
-            "http://localhost:5000/api/auth/me",
+           `${API_URL}/api/auth/me`,
             {withCredentials:true}
           )
           setUser(response.data.user)
@@ -105,7 +105,7 @@ const handleLoginSuccess= async () => {
 const handleToggleTask = async (id) => {
           try{
             await axios.patch(
-              `http://localhost:5000/api/tasks/${id}/toggle`,
+             `${API_URL}/api/tasks/${id}/toggle`,
               {},
               {withCredentials:true}
             )
@@ -119,7 +119,7 @@ const handleToggleTask = async (id) => {
 const handleDeleteTask = async (id) => {
       try{
         await axios.delete(
-          `http://localhost:5000/api/tasks/${id}`,
+          `${API_URL}/api/tasks/${id}`,
           {withCredentials:true}
         )
         fetchTasks()

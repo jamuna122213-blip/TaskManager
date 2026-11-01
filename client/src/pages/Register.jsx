@@ -1,5 +1,6 @@
 import {useState} from "react"
 import axios from "axios"
+import { API_URL } from "../config"
 
 function Register({onClose,onGoToLogin}){
 
@@ -18,7 +19,7 @@ function Register({onClose,onGoToLogin}){
 
         try{
             const response = await axios.post(
-                "http://localhost:5000/api/auth/register",
+                              `${API_URL}/api/auth/register`,
                 {   
                     username:name,
                     email,
