@@ -1,16 +1,31 @@
 const express= require('express')
 const router = express.Router()
 const Task = require("../models/Task.js")
+const { toggleTask } = require("../controllers/authControllers.js")
+const authMiddleware = require("../middleware/authMiddleware.js")
 
 router.post("/",async (req,res) => {
 
     try{
         const {title,description,dueDate}=req.body
+        
+        if (!title || !title.trim()){
+            return res.status(400).json({
+                message:"Task title is required"
+            })
+        }
+
+        if (dueDate && isNaN(Date.parse(dueDate))){
+            return res.status(400).json({
+                message:"Invalid due date"
+            })
+        }
 
         const task = await Task.create({
             title,
             description,
-            dueDate
+            dueDate,
+            user:req.user.id
         })
 
         res.status(201).json({
@@ -55,6 +70,8 @@ router.get("/",async (req,res) => {
        filter.completed =false
      }
      console.log("QUery",req.query)
+
+     filter.user=req.user.id
       
      const tasks = await Task.find(filter)
      .skip(skip).limit(limit).sort({[sortby]:order})
@@ -78,7 +95,12 @@ router.get("/",async (req,res) => {
 
 router.get("/:id",async (req,res) => {
     try{
-        const task = await Task.findById(req.params.id)
+        const task = await Task.findById({
+            _id:req.params.id,
+            user:req.user.id
+        })
+        next
+        
         if (!task){
             return res.status(400).json({
                 message:"task not found"
@@ -98,10 +120,11 @@ router.get("/:id",async (req,res) => {
 router.put("/:id",async (req,res) => {
     try{
 
-        const {title,description,dueDate}=req.body
+        const {title,description,dueDate,completed}=req.body
 
-        const task = await Task.findByIdAndUpdate(
-            req.params.id,
+        const task = await Task.findOneAndUpdate(
+           { _id:req.params.id,
+            user:req.user.id},
             {
                 title,
                 description,
@@ -132,7 +155,11 @@ router.put("/:id",async (req,res) => {
 
 router.delete("/:id",async (req,res) => {
     try{
-        const task = await Task.findByIdAndDelete(req.params.id)
+        const task = await Task.findByIdAndDelete(
+            {_id:req.params.id,
+            user:req.user.id}
+        )
+
         if(!task){
             return res.status(400).json({
                 message:"task not found"
@@ -150,4 +177,7 @@ router.delete("/:id",async (req,res) => {
         })
     }
 })
+
+router.patch("/:id/toggle",authMiddleware,toggleTask)
+
 module.exports = router

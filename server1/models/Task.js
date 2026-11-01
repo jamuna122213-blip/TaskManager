@@ -15,9 +15,14 @@ const taskmanager = new mongoose.Schema({
         type:Boolean,
         default:false
     },
-    dueData:{
+    dueDate:{
         type:Date,
         default:null
+    },
+    user:{
+        type:mongoose.Schema.Types.ObjectId,
+        ref:"User",
+        required:true
     }
 },{
   timestamps:true

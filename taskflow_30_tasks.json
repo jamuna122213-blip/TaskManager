@@ -1,0 +1,632 @@
+[
+  {
+    "_id": {
+      "$oid": "702e6b4226f2a74de4000001"
+    },
+    "title": "Finish data structures assignment",
+    "description": "Solve the linked list and binary tree problems and submit the assignment on the college portal.",
+    "completed": false,
+    "dueDate": {
+      "$date": "2026-11-04T00:00:00.000Z"
+    },
+    "user": {
+      "$oid": "6ae6c2fb6cbbb6d839714546"
+    },
+    "createdAt": {
+      "$date": "2026-10-30T10:00:00.000Z"
+    },
+    "updatedAt": {
+      "$date": "2026-10-30T10:00:00.000Z"
+    },
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "7151326f0ca6a3a450000002"
+    },
+    "title": "Revise DBMS normalization notes",
+    "description": "Go through 1NF to BCNF with examples and solve five practice questions.",
+    "completed": false,
+    "dueDate": {
+      "$date": "2026-11-06T00:00:00.000Z"
+    },
+    "user": {
+      "$oid": "6ae6c2fb6cbbb6d839714546"
+    },
+    "createdAt": {
+      "$date": "2026-10-30T10:00:00.000Z"
+    },
+    "updatedAt": {
+      "$date": "2026-10-30T10:00:00.000Z"
+    },
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "6c28b2f289d23f0824000003"
+    },
+    "title": "Fix login API token bug",
+    "description": "Debug the JWT expiry issue in the auth middleware and add a regression test.",
+    "completed": false,
+    "dueDate": {
+      "$date": "2026-11-03T00:00:00.000Z"
+    },
+    "user": {
+      "$oid": "6ae6c2fb6cbbb6d839714546"
+    },
+    "createdAt": {
+      "$date": "2026-10-30T10:00:00.000Z"
+    },
+    "updatedAt": {
+      "$date": "2026-10-30T10:00:00.000Z"
+    },
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "6c818e80955d9dc9f8000004"
+    },
+    "title": "Write unit tests for task routes",
+    "description": "Cover create, update, delete and fetch endpoints using Jest and Supertest.",
+    "completed": false,
+    "dueDate": {
+      "$date": "2026-11-08T00:00:00.000Z"
+    },
+    "user": {
+      "$oid": "6ae6c2fb6cbbb6d839714546"
+    },
+    "createdAt": {
+      "$date": "2026-10-30T10:00:00.000Z"
+    },
+    "updatedAt": {
+      "$date": "2026-10-30T10:00:00.000Z"
+    },
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "6bed904681e8e25d94000005"
+    },
+    "title": "Design TaskFlow dashboard layout",
+    "description": "Sketch the wireframe for the dashboard with filters, task cards and a progress summary.",
+    "completed": true,
+    "dueDate": {
+      "$date": "2026-10-31T00:00:00.000Z"
+    },
+    "user": {
+      "$oid": "6ae6c2fb6cbbb6d839714546"
+    },
+    "createdAt": {
+      "$date": "2026-10-30T10:00:00.000Z"
+    },
+    "updatedAt": {
+      "$date": "2026-10-30T10:00:00.000Z"
+    },
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "6e6f675b16099950d8000006"
+    },
+    "title": "Prepare project demo script",
+    "description": "Outline the demo flow covering signup, task creation, filtering and completion.",
+    "completed": false,
+    "dueDate": {
+      "$date": "2026-11-09T00:00:00.000Z"
+    },
+    "user": {
+      "$oid": "6ae6c2fb6cbbb6d839714546"
+    },
+    "createdAt": {
+      "$date": "2026-10-30T10:00:00.000Z"
+    },
+    "updatedAt": {
+      "$date": "2026-10-30T10:00:00.000Z"
+    },
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "71f03674116b0d549b000007"
+    },
+    "title": "Submit internship application",
+    "description": "Tailor the resume for the backend role and apply before the deadline.",
+    "completed": false,
+    "dueDate": {
+      "$date": "2026-11-05T00:00:00.000Z"
+    },
+    "user": {
+      "$oid": "6ae6c2fb6cbbb6d839714546"
+    },
+    "createdAt": {
+      "$date": "2026-10-30T10:00:00.000Z"
+    },
+    "updatedAt": {
+      "$date": "2026-10-30T10:00:00.000Z"
+    },
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "6ed9c1718d1738f7d9000008"
+    },
+    "title": "Pay electricity bill",
+    "description": "Check the current bill amount and pay through the provider app.",
+    "completed": true,
+    "dueDate": {
+      "$date": "2026-10-30T00:00:00.000Z"
+    },
+    "user": {
+      "$oid": "6ae6c2fb6cbbb6d839714546"
+    },
+    "createdAt": {
+      "$date": "2026-10-30T10:00:00.000Z"
+    },
+    "updatedAt": {
+      "$date": "2026-10-30T10:00:00.000Z"
+    },
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "71cad4a1d30f21ddb6000009"
+    },
+    "title": "Book dentist appointment",
+    "description": "Call the clinic and schedule a routine checkup for next week.",
+    "completed": false,
+    "dueDate": {
+      "$date": "2026-11-07T00:00:00.000Z"
+    },
+    "user": {
+      "$oid": "6ae6c2fb6cbbb6d839714546"
+    },
+    "createdAt": {
+      "$date": "2026-10-30T10:00:00.000Z"
+    },
+    "updatedAt": {
+      "$date": "2026-10-30T10:00:00.000Z"
+    },
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "740c192bf21fb17c2300000a"
+    },
+    "title": "Complete operating systems lab record",
+    "description": "Write the aim, algorithm and output for the CPU scheduling experiments.",
+    "completed": false,
+    "dueDate": {
+      "$date": "2026-11-10T00:00:00.000Z"
+    },
+    "user": {
+      "$oid": "6ae6c2fb6cbbb6d839714546"
+    },
+    "createdAt": {
+      "$date": "2026-10-30T10:00:00.000Z"
+    },
+    "updatedAt": {
+      "$date": "2026-10-30T10:00:00.000Z"
+    },
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "6e926304a0a170b33800000b"
+    },
+    "title": "Refactor Mongoose Task schema",
+    "description": "Add validation, indexes on user and dueDate, and clean up the timestamps option.",
+    "completed": false,
+    "dueDate": {
+      "$date": "2026-11-11T00:00:00.000Z"
+    },
+    "user": {
+      "$oid": "6ae6c2fb6cbbb6d839714546"
+    },
+    "createdAt": {
+      "$date": "2026-10-30T10:00:00.000Z"
+    },
+    "updatedAt": {
+      "$date": "2026-10-30T10:00:00.000Z"
+    },
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "7453f48e0ff29d0da900000c"
+    },
+    "title": "Deploy backend to Render",
+    "description": "Set environment variables, connect MongoDB Atlas and verify the live health endpoint.",
+    "completed": false,
+    "dueDate": {
+      "$date": "2026-11-12T00:00:00.000Z"
+    },
+    "user": {
+      "$oid": "6ae6c2fb6cbbb6d839714546"
+    },
+    "createdAt": {
+      "$date": "2026-10-30T10:00:00.000Z"
+    },
+    "updatedAt": {
+      "$date": "2026-10-30T10:00:00.000Z"
+    },
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "743bd04b6595e60af500000d"
+    },
+    "title": "Practice 10 LeetCode problems",
+    "description": "Solve array and hashing problems and note the patterns used in each solution.",
+    "completed": false,
+    "dueDate": {
+      "$date": "2026-11-02T00:00:00.000Z"
+    },
+    "user": {
+      "$oid": "6ae6c2fb6cbbb6d839714546"
+    },
+    "createdAt": {
+      "$date": "2026-10-30T10:00:00.000Z"
+    },
+    "updatedAt": {
+      "$date": "2026-10-30T10:00:00.000Z"
+    },
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "6bcb1e2838f9ebdacc00000e"
+    },
+    "title": "Buy groceries for the week",
+    "description": "Pick up rice, vegetables, milk, eggs and fruits from the nearby market.",
+    "completed": true,
+    "dueDate": {
+      "$date": "2026-10-31T00:00:00.000Z"
+    },
+    "user": {
+      "$oid": "6ae6c2fb6cbbb6d839714546"
+    },
+    "createdAt": {
+      "$date": "2026-10-30T10:00:00.000Z"
+    },
+    "updatedAt": {
+      "$date": "2026-10-30T10:00:00.000Z"
+    },
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "6bbecd7adb8e81973e00000f"
+    },
+    "title": "Back up laptop files",
+    "description": "Copy project folders and documents to the external drive and verify the copy.",
+    "completed": false,
+    "dueDate": {
+      "$date": "2026-11-03T00:00:00.000Z"
+    },
+    "user": {
+      "$oid": "6ae6c2fb6cbbb6d839714546"
+    },
+    "createdAt": {
+      "$date": "2026-10-30T10:00:00.000Z"
+    },
+    "updatedAt": {
+      "$date": "2026-10-30T10:00:00.000Z"
+    },
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "6d217be96b4a23d596000010"
+    },
+    "title": "Read research paper on REST design",
+    "description": "Summarize the key points of the paper in one page for the seminar.",
+    "completed": false,
+    "dueDate": {
+      "$date": "2026-11-13T00:00:00.000Z"
+    },
+    "user": {
+      "$oid": "6ae6c2fb6cbbb6d839714546"
+    },
+    "createdAt": {
+      "$date": "2026-10-30T10:00:00.000Z"
+    },
+    "updatedAt": {
+      "$date": "2026-10-30T10:00:00.000Z"
+    },
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "6d4ede691e8a6a63ec000011"
+    },
+    "title": "Prepare seminar presentation slides",
+    "description": "Create 12 slides on microservices with diagrams and a short Q&A section.",
+    "completed": false,
+    "dueDate": {
+      "$date": "2026-11-14T00:00:00.000Z"
+    },
+    "user": {
+      "$oid": "6ae6c2fb6cbbb6d839714546"
+    },
+    "createdAt": {
+      "$date": "2026-10-30T10:00:00.000Z"
+    },
+    "updatedAt": {
+      "$date": "2026-10-30T10:00:00.000Z"
+    },
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "742276648f4ef8aa38000012"
+    },
+    "title": "Renew library membership",
+    "description": "Check the expiry date and submit the renewal form with the fee.",
+    "completed": true,
+    "dueDate": {
+      "$date": "2026-10-29T00:00:00.000Z"
+    },
+    "user": {
+      "$oid": "6ae6c2fb6cbbb6d839714546"
+    },
+    "createdAt": {
+      "$date": "2026-10-30T10:00:00.000Z"
+    },
+    "updatedAt": {
+      "$date": "2026-10-30T10:00:00.000Z"
+    },
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "780eda812eae97ba94000013"
+    },
+    "title": "Implement pagination in task list",
+    "description": "Add page and limit query parameters to the tasks endpoint and update the frontend.",
+    "completed": false,
+    "dueDate": {
+      "$date": "2026-11-15T00:00:00.000Z"
+    },
+    "user": {
+      "$oid": "6ae6c2fb6cbbb6d839714546"
+    },
+    "createdAt": {
+      "$date": "2026-10-30T10:00:00.000Z"
+    },
+    "updatedAt": {
+      "$date": "2026-10-30T10:00:00.000Z"
+    },
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "6ca61dbd9294e3bf91000014"
+    },
+    "title": "Write README for TaskFlow",
+    "description": "Document setup steps, environment variables, API routes and sample requests.",
+    "completed": false,
+    "dueDate": {
+      "$date": "2026-11-16T00:00:00.000Z"
+    },
+    "user": {
+      "$oid": "6ae6c2fb6cbbb6d839714546"
+    },
+    "createdAt": {
+      "$date": "2026-10-30T10:00:00.000Z"
+    },
+    "updatedAt": {
+      "$date": "2026-10-30T10:00:00.000Z"
+    },
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "7538fd535f301850c5000015"
+    },
+    "title": "Call parents this weekend",
+    "description": "Catch up with family and share the internship and project updates.",
+    "completed": false,
+    "dueDate": {
+      "$date": "2026-11-01T00:00:00.000Z"
+    },
+    "user": {
+      "$oid": "6ae6c2fb6cbbb6d839714546"
+    },
+    "createdAt": {
+      "$date": "2026-10-30T10:00:00.000Z"
+    },
+    "updatedAt": {
+      "$date": "2026-10-30T10:00:00.000Z"
+    },
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "6c8f135cb68c38fb29000016"
+    },
+    "title": "Book train tickets for Diwali travel",
+    "description": "Confirm travel dates and reserve seats before the booking window closes.",
+    "completed": false,
+    "dueDate": {
+      "$date": "2026-11-04T00:00:00.000Z"
+    },
+    "user": {
+      "$oid": "6ae6c2fb6cbbb6d839714546"
+    },
+    "createdAt": {
+      "$date": "2026-10-30T10:00:00.000Z"
+    },
+    "updatedAt": {
+      "$date": "2026-10-30T10:00:00.000Z"
+    },
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "6c012f020f907a70c3000017"
+    },
+    "title": "Organize study desk",
+    "description": "Sort notebooks, discard old papers and set up a better lighting arrangement.",
+    "completed": false,
+    "dueDate": {
+      "$date": "2026-11-08T00:00:00.000Z"
+    },
+    "user": {
+      "$oid": "6ae6c2fb6cbbb6d839714546"
+    },
+    "createdAt": {
+      "$date": "2026-10-30T10:00:00.000Z"
+    },
+    "updatedAt": {
+      "$date": "2026-10-30T10:00:00.000Z"
+    },
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "74e7769a7f34b9b5df000018"
+    },
+    "title": "Attend morning workout sessions",
+    "description": "Complete a 30-minute workout on five days this week and log each session.",
+    "completed": false,
+    "dueDate": {
+      "$date": "2026-11-07T00:00:00.000Z"
+    },
+    "user": {
+      "$oid": "6ae6c2fb6cbbb6d839714546"
+    },
+    "createdAt": {
+      "$date": "2026-10-30T10:00:00.000Z"
+    },
+    "updatedAt": {
+      "$date": "2026-10-30T10:00:00.000Z"
+    },
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "75e2eb146d881ed162000019"
+    },
+    "title": "Prepare for mid-semester exam in networks",
+    "description": "Revise the OSI model, TCP/IP and subnetting problems with past papers.",
+    "completed": false,
+    "dueDate": {
+      "$date": "2026-11-17T00:00:00.000Z"
+    },
+    "user": {
+      "$oid": "6ae6c2fb6cbbb6d839714546"
+    },
+    "createdAt": {
+      "$date": "2026-10-30T10:00:00.000Z"
+    },
+    "updatedAt": {
+      "$date": "2026-10-30T10:00:00.000Z"
+    },
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "776f877077506bf2ef00001a"
+    },
+    "title": "Review pull request feedback",
+    "description": "Address reviewer comments on the filter feature branch and push the updates.",
+    "completed": true,
+    "dueDate": {
+      "$date": "2026-10-30T00:00:00.000Z"
+    },
+    "user": {
+      "$oid": "6ae6c2fb6cbbb6d839714546"
+    },
+    "createdAt": {
+      "$date": "2026-10-30T10:00:00.000Z"
+    },
+    "updatedAt": {
+      "$date": "2026-10-30T10:00:00.000Z"
+    },
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "745e761c74ec66a78700001b"
+    },
+    "title": "Set up CI pipeline with GitHub Actions",
+    "description": "Configure lint and test jobs to run on every push to the main branch.",
+    "completed": false,
+    "dueDate": {
+      "$date": "2026-11-18T00:00:00.000Z"
+    },
+    "user": {
+      "$oid": "6ae6c2fb6cbbb6d839714546"
+    },
+    "createdAt": {
+      "$date": "2026-10-30T10:00:00.000Z"
+    },
+    "updatedAt": {
+      "$date": "2026-10-30T10:00:00.000Z"
+    },
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "70c90a943f4cbd87ad00001c"
+    },
+    "title": "Update resume with latest projects",
+    "description": "Add TaskFlow and the recent hackathon project with measurable outcomes.",
+    "completed": false,
+    "dueDate": {
+      "$date": "2026-11-05T00:00:00.000Z"
+    },
+    "user": {
+      "$oid": "6ae6c2fb6cbbb6d839714546"
+    },
+    "createdAt": {
+      "$date": "2026-10-30T10:00:00.000Z"
+    },
+    "updatedAt": {
+      "$date": "2026-10-30T10:00:00.000Z"
+    },
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "77b5c741b22e05319a00001d"
+    },
+    "title": "Plan weekend outing",
+    "description": "Compare nearby places, estimate the cost and finalize the schedule with friends.",
+    "completed": false,
+    "dueDate": {
+      "$date": "2026-11-09T00:00:00.000Z"
+    },
+    "user": {
+      "$oid": "6ae6c2fb6cbbb6d839714546"
+    },
+    "createdAt": {
+      "$date": "2026-10-30T10:00:00.000Z"
+    },
+    "updatedAt": {
+      "$date": "2026-10-30T10:00:00.000Z"
+    },
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "777a2ea1143e7d1bfb00001e"
+    },
+    "title": "Submit scholarship documents",
+    "description": "Scan the marksheets and income certificate and upload them before the portal closes.",
+    "completed": false,
+    "dueDate": {
+      "$date": "2026-11-06T00:00:00.000Z"
+    },
+    "user": {
+      "$oid": "6ae6c2fb6cbbb6d839714546"
+    },
+    "createdAt": {
+      "$date": "2026-10-30T10:00:00.000Z"
+    },
+    "updatedAt": {
+      "$date": "2026-10-30T10:00:00.000Z"
+    },
+    "__v": 0
+  }
+]
